@@ -9,12 +9,11 @@ import com.wang.mvplogindemo.model.UserBean;
 import com.wang.mvplogindemo.model.Model;
 import com.wang.mvplogindemo.view.IViewInterface;
 
-
 /**
  * Created by Wongerfeng on 2018/6/26.
  */
 
-public class UserLoginPresenter {
+public class UserLoginPresenter extends BasePresenter<IViewInterface>{
     private static final String TAG = "UserLoginPresenter";
     //多态 子类实例化接口
     private IModelInterface mIModelInterface;

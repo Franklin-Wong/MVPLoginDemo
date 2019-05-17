@@ -37,12 +37,6 @@ public class Model implements IModelInterface {
 
             }
         }.start();
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        }).start();
 
     }
 }

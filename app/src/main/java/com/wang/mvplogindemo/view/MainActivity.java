@@ -1,7 +1,6 @@
 package com.wang.mvplogindemo.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +12,13 @@ import com.wang.mvplogindemo.R;
 import com.wang.mvplogindemo.model.UserBean;
 import com.wang.mvplogindemo.pressentor.UserLoginPresenter;
 
-public class MainActivity extends AppCompatActivity implements IViewInterface, View.OnClickListener {
+public class MainActivity extends BaseActivity<IViewInterface, UserLoginPresenter> implements IViewInterface, View.OnClickListener {
     private static final String TAG = "MainActivity";
 
     private EditText mName,mPassword;
     private Button mSubmit, mClean;
     private ProgressBar mProgressBar;
-    private UserLoginPresenter mUserLoginPresenter = new UserLoginPresenter(this);
+//    private UserLoginPresenter mUserLoginPresenter = new UserLoginPresenter(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements IViewInterface, V
         mSubmit.setOnClickListener(this);
         mClean.setOnClickListener(this);
 
+    }
+
+    @Override
+    public UserLoginPresenter createPresenter() {
+        return mPresenter = new UserLoginPresenter(this);
     }
 
     @Override
@@ -84,10 +88,12 @@ public class MainActivity extends AppCompatActivity implements IViewInterface, V
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.submit:
-                mUserLoginPresenter.login();
+                mPresenter.login();
+//                mUserLoginPresenter.login();
                 break;
             case R.id.clean:
-                mUserLoginPresenter.clear();
+                mPresenter.clear();
+//                mUserLoginPresenter.clear();
                 break;
             default:
                 break;
