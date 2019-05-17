@@ -1,6 +1,7 @@
 package com.wang.mvplogindemo.view;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,14 +44,26 @@ public class MainActivity extends BaseActivity<IViewInterface, UserLoginPresente
 
     @Override
     public String getUserName() {
-        Log.i(TAG, "getUserName: -----" + mName.getText());
-        return mName.getText().toString();
+        Log.i(TAG, "getUserName:" + mName.getText());
+        String name = mName.getText().toString();
+        if (!TextUtils.isEmpty(name)){
+            return name;
+        }else {
+            Toast.makeText(MainActivity.this, "请您填写名字",Toast.LENGTH_SHORT).show();
+            return "";
+        }
     }
 
     @Override
     public String getPassword() {
-        Log.i(TAG, "getPassword: -----" + mPassword.getText());
-        return mPassword.getText().toString();
+        Log.i(TAG, "getPassword:" + mPassword.getText());
+        String password = mPassword.getText().toString();
+        if (!TextUtils.isEmpty(password)){
+            return password;
+        }else {
+            Toast.makeText(MainActivity.this, "请您填写密码",Toast.LENGTH_SHORT).show();
+            return "";
+        }
     }
 
     @Override
